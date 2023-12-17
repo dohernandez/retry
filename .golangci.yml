@@ -1,0 +1,72 @@
+# See https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml
+run:
+  go: 1.19
+  tests: true
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/dohernandez/retry)
+  gocyclo:
+    min-complexity: 20
+  dupl:
+    # tokens count to trigger issue, 150 by default
+    threshold: 200
+  misspell:
+    locale: US
+  unused:
+    check-exported: false
+  unparam:
+    check-exported: true
+  funlen:
+    lines: 80
+
+linters:
+  enable-all: true
+  disable:
+    - contextcheck
+    - lll
+    - maligned # deprecated
+    - gochecknoglobals
+    - gomnd
+    - wrapcheck
+    - paralleltest
+    - forbidigo
+    - exhaustivestruct
+    - interfacer # deprecated
+    - forcetypeassert
+    - scopelint # deprecated
+    - ifshort # too many false positives
+    - golint # deprecated
+    - varnamelen
+    - tagliatelle
+    - errname
+    - ireturn
+    - testpackage
+    - structcheck # deprecated
+    - nosnakecase # deprecated
+    - deadcode # deprecated
+    - varcheck # deprecated
+    - exhaustruct
+    - rowserrcheck # disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649.
+    - sqlclosecheck # disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649.
+    - wastedassign # disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649.
+    - tagalign
+    - depguard
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - linters:
+        - gomnd
+        - goconst
+        - goerr113
+        - noctx
+        - funlen
+        - dupl
+      path: "_test.go"
