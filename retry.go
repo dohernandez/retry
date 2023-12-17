@@ -1,3 +1,4 @@
+// Package retry provides a simple mechanism to retry operations using a backoff strategy.
 package retry
 
 import (
