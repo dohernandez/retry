@@ -14,29 +14,33 @@ ifneq "$(wildcard ./vendor )" ""
   ifeq (,$(findstring -mod,$(GOFLAGS)))
       export GOFLAGS := ${GOFLAGS} ${modVendor}
   endif
-  ifneq "$(wildcard ./vendor/github.com/bool64/dev)" ""
-  	DEVGO_PATH := ./vendor/github.com/bool64/dev
+  ifneq "$(wildcard ./vendor/github.com/dohernandez/dev)" ""
+  	EXTEND_DEVGO_PATH := ./vendor/github.com/dohernandez/dev
   endif
 endif
 
-ifeq ($(DEVGO_PATH),)
-	DEVGO_PATH := $(shell GO111MODULE=on $(GO) list ${modVendor} -f '{{.Dir}}' -m github.com/bool64/dev)
-	ifeq ($(DEVGO_PATH),)
-    	$(info Module github.com/bool64/dev not found, downloading.)
-    	DEVGO_PATH := $(shell export GO111MODULE=on && $(GO) get github.com/bool64/dev && $(GO) list -f '{{.Dir}}' -m github.com/bool64/dev)
+ifeq ($(EXTEND_DEVGO_PATH),)
+	EXTEND_DEVGO_PATH := $(shell GO111MODULE=on $(GO) list ${modVendor} -f '{{.Dir}}' -m github.com/dohernandez/dev)
+	ifeq ($(EXTEND_DEVGO_PATH),)
+    	$(info Module github.com/dohernandez/dev not found, downloading.)
+    	EXTEND_DEVGO_PATH := $(shell export GO111MODULE=on && $(GO) get github.com/dohernandez/dev && $(GO) list -f '{{.Dir}}' -m github.com/dohernandez/dev)
 	endif
 endif
 
--include $(DEVGO_PATH)/makefiles/main.mk
+-include $(EXTEND_DEVGO_PATH)/makefiles/main.mk
+-include $(EXTEND_DEVGO_PATH)/makefiles/recipe.mk
+
+# Start extra recipes here.
 -include $(DEVGO_PATH)/makefiles/lint.mk
 -include $(DEVGO_PATH)/makefiles/test-unit.mk
--include $(DEVGO_PATH)/makefiles/bench.mk
--include $(DEVGO_PATH)/makefiles/reset-ci.mk
+-include $(EXTEND_DEVGO_PATH)/makefiles/check.mk
+# End extra recipes here.
+
+.PHONY: test
+
+# DO NOT EDIT ANYTHING BELOW THIS LINE.
 
 # Add your custom targets here.
 
 ## Run tests
 test: test-unit
-
-## Run lint and test
-check: lint test

@@ -3,4 +3,4 @@
 
 package noprune
 
-import _ "github.com/bool64/dev" // Include CI/Dev scripts to project.
+import _ "github.com/dohernandez/dev" // Include CI/Dev scripts to project.
