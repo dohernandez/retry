@@ -1,4 +1,4 @@
-# This script is provided by github.com/bool64/dev.
+# This code is provided by github.com/dohernandez/dev.
 name: cloc
 on:
   pull_request:
@@ -35,7 +35,7 @@ jobs:
         continue-on-error: true
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
           header: LOC
           message: |
             ### Lines Of Code

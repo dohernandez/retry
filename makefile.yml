@@ -1,0 +1,10 @@
+plugins:
+  - name: bool64/dev
+    package: github.com/bool64/dev
+    makefiles_path: makefiles
+    main: main.mk
+
+  - name: dohernandez/storage
+    package: github.com/dohernandez/storage
+    makefiles_path: makefiles
+    main: main.mk

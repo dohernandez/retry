@@ -1,9 +1,8 @@
-# This script is provided by github.com/bool64/dev.
+# This code is provided by github.com/dohernandez/dev.
 name: test-unit
 on:
   push:
     branches:
-      - master
       - main
   pull_request:
 
@@ -63,13 +62,13 @@ jobs:
         with:
           path: |
             unit-base.txt
-          # Use base sha for PR or new commit hash for master/main push in test result key.
+          # Use base sha for PR or new commit hash for main push in test result key.
           key: ${{ runner.os }}-unit-test-coverage-${{ (github.event.pull_request.base.sha != github.event.after) && github.event.pull_request.base.sha || github.event.after }}
 
       - name: Run test for base code
         if: matrix.go-version == env.COV_GO_VERSION && env.RUN_BASE_COVERAGE == 'on' && steps.base-coverage.outputs.cache-hit != 'true' && github.event.pull_request.base.sha != ''
         run: |
-          git fetch origin master ${{ github.event.pull_request.base.sha }}
+          git fetch origin main ${{ github.event.pull_request.base.sha }}
           HEAD=$(git rev-parse HEAD)
           git reset --hard ${{ github.event.pull_request.base.sha }}
           (make test-unit && go tool cover -func=./unit.coverprofile > unit-base.txt) || echo "No test-unit in base"
@@ -91,7 +90,7 @@ jobs:
           curl -sLO https://github.com/vearutop/gocovdiff/releases/download/v1.4.2/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && rm linux_amd64.tar.gz
           gocovdiff_hash=$(git hash-object ./gocovdiff)
           [ "$gocovdiff_hash" == "c37862c73a677e5a9c069470287823ab5bbf0244" ] || (echo "::error::unexpected hash for gocovdiff, possible tampering: $gocovdiff_hash" && exit 1)
-          git fetch origin master ${{ github.event.pull_request.base.sha }}
+          git fetch origin main ${{ github.event.pull_request.base.sha }}
           REP=$(./gocovdiff -mod github.com/$GITHUB_REPOSITORY -cov unit.coverprofile -gha-annotations gha-unit.txt -delta-cov-file delta-cov-unit.txt -target-delta-cov ${TARGET_DELTA_COV})
           echo "${REP}"
           cat gha-unit.txt
@@ -106,7 +105,7 @@ jobs:
         if: matrix.go-version == env.COV_GO_VERSION && github.event.pull_request.base.sha != ''
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
           header: unit-test
           message: |
             ### Unit Test Coverage
@@ -125,7 +124,7 @@ jobs:
             </details>
 
       - name: Store base coverage
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: cp unit.txt unit-base.txt
 
       - name: Upload code coverage
