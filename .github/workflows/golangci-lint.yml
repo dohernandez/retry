@@ -1,11 +1,10 @@
-# This script is provided by github.com/bool64/dev.
+# This code is provided by github.com/dohernandez/dev.
 name: lint
 on:
   push:
     tags:
       - v*
     branches:
-      - master
       - main
   pull_request:
 
@@ -21,7 +20,7 @@ jobs:
     steps:
       - uses: actions/setup-go@v3
         with:
-          go-version: 1.21.x
+          go-version: 1.19.x
       - uses: actions/checkout@v2
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3.7.0
@@ -46,3 +45,6 @@ jobs:
 
           # Optional: if set to true then the action don't cache or restore ~/.cache/go-build.
           # skip-build-cache: true
+
+          # Optional: if set diff timeout
+          # timeout=5m

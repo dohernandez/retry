@@ -4,12 +4,7 @@
 GO ?= go
 export GO111MODULE = on
 
-ifneq "$(GOFLAGS)" ""
-  $(info GOFLAGS: ${GOFLAGS})
-endif
-
 ifneq "$(wildcard ./vendor )" ""
-  $(info Using vendor)
   modVendor =  -mod=vendor
   ifeq (,$(findstring -mod,$(GOFLAGS)))
       export GOFLAGS := ${GOFLAGS} ${modVendor}
@@ -31,16 +26,14 @@ endif
 -include $(EXTEND_DEVGO_PATH)/makefiles/recipe.mk
 
 # Start extra recipes here.
--include $(DEVGO_PATH)/makefiles/lint.mk
--include $(DEVGO_PATH)/makefiles/test-unit.mk
+-include $(PLUGIN_BOOL64DEV_MAKEFILES_PATH)/lint.mk
+-include $(PLUGIN_BOOL64DEV_MAKEFILES_PATH)/test-unit.mk
 -include $(EXTEND_DEVGO_PATH)/makefiles/check.mk
+-include $(EXTEND_DEVGO_PATH)/makefiles/github-actions.mk
 # End extra recipes here.
-
-.PHONY: test
 
 # DO NOT EDIT ANYTHING BELOW THIS LINE.
 
 # Add your custom targets here.
 
-## Run tests
-test: test-unit
+.PHONY:
