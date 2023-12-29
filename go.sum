@@ -20,6 +20,8 @@ github.com/dohernandez/dev v0.7.4 h1:0FZoNECJJDOAYdrjoNrUvRRQb6nXgdTDfs71Ks/lQ1o
 github.com/dohernandez/dev v0.7.4/go.mod h1:wD9owTM9rveq54KvgDhoP8G5ntMf/XdbI/xonKbLWkY=
 github.com/dohernandez/dev v0.7.5 h1:JYZecxhYnCJJ+k2jPqM0JhTm+QBwaBGMQGpOWR8HkpQ=
 github.com/dohernandez/dev v0.7.5/go.mod h1:wD9owTM9rveq54KvgDhoP8G5ntMf/XdbI/xonKbLWkY=
+github.com/dohernandez/dev v0.8.1 h1:Gow/5Ms3HO917LuZ2SdfBfK7iT2pot+wta7Q+m56d/A=
+github.com/dohernandez/dev v0.8.1/go.mod h1:wD9owTM9rveq54KvgDhoP8G5ntMf/XdbI/xonKbLWkY=
 github.com/dohernandez/errors v0.0.0-20231017211553-9f8df5e0169a h1:u+JsU1xxhrC3qxy48+3+v5vX2aWfDygY3cYaRDiek6c=
 github.com/dohernandez/errors v0.0.0-20231017211553-9f8df5e0169a/go.mod h1:icPZ1kFrVXAbkE9o/jJQQZ30uwfmjHFaDlXXghbpPWs=
 github.com/dohernandez/storage v0.2.3 h1:Lg8UDYTj5dNiF407V8KP/8hgyvQ5rTgNguUbJ/Ohtiw=
