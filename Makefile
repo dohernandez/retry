@@ -23,7 +23,6 @@ ifeq ($(EXTEND_DEVGO_PATH),)
 endif
 
 -include $(EXTEND_DEVGO_PATH)/makefiles/main.mk
--include $(EXTEND_DEVGO_PATH)/makefiles/recipe.mk
 
 # Start extra recipes here.
 -include $(PLUGIN_BOOL64DEV_MAKEFILES_PATH)/lint.mk

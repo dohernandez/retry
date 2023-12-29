@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/cenkalti/backoff/v4 v4.2.1
-	github.com/dohernandez/dev v0.7.5
+	github.com/dohernandez/dev v0.8.1
 	github.com/dohernandez/errors v0.0.0-20231017211553-9f8df5e0169a
 	github.com/dohernandez/storage v0.2.3
 	github.com/stretchr/testify v1.8.4
