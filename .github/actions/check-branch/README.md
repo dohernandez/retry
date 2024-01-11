@@ -12,7 +12,7 @@ The input `types` default values are:
 - patch
 - issue
 - hotfix
-- dependabot/
+- dependabot
 - whitesource/
 
 The input `separators` default value are `-` and `\`.

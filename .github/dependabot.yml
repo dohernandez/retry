@@ -1,0 +1,9 @@
+# This code is provided by github.com/dohernandez/dev.
+
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/" # Location go.mod
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 1
