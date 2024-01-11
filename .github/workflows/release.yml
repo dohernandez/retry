@@ -32,7 +32,7 @@ jobs:
         id: determine-level
         run: |
           case "${{ env.PR_BRANCH }}" in
-            patch* | issue* | hotfix* | dependabot/* | whitesource/*)
+            patch* | issue* | hotfix* | dependabot* | whitesource/*)
               LEVEL="patch";;
             minor* | feature* | feat*)
               LEVEL="minor";;

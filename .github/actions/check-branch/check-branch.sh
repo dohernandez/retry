@@ -2,7 +2,7 @@
 
 # This code is provided by github.com/dohernandez/dev.
 
-FLAT_TYPES_DEFAULT="major release minor feature feat patch issue hotfix dependabot/ whitesource/"
+FLAT_TYPES_DEFAULT="major release minor feature feat patch issue hotfix dependabot whitesource/"
 FLAT_SEPARATORS_DEFAULT="- /"
 
 types="${1}"
